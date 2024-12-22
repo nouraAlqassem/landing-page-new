@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #575757;
+}
+
+section {
+  height: 100vh;
+  /* Ensure section fills the viewport */
+  padding: 5rem 2rem;
+  border-bottom: 1px solid #ddd;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+section p {
+  text-align: justify;
+}
+
+section.active {
+  background-color: #f0f8ff;
+  border: 2px solid #007bff;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.menu__link.active {
+  color: #fff;
+  background-color: #007bff;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Scroll to Top Button */
+#scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+#scroll-to-top:hover {
+  background: #575757;
+}
