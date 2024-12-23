@@ -33,6 +33,7 @@ const buildNavigation = () => {
         fragment.appendChild(navItem);
     });
 
+    navBar.innerHTML = "";
     // Append the fragment to the navbar
     navBar.appendChild(fragment);
 };
@@ -47,10 +48,11 @@ const setActiveSection = () => {
         const bounding = section.getBoundingClientRect();
         const isInViewport = bounding.top >= 0 && bounding.top < window.innerHeight / 2;
 
-        if (isInViewport && !section.classList.contains('active')) {
+        // if (isInViewport && !section.classList.contains('active')) {
+        if (isInViewport) {
             // Remove the active class from all sections
             sections.forEach(sec => sec.classList.remove('active'));
-            section.classList.add('active'); // Add the active class
+            section.classList.add('active');// Add the active class
 
             // Update the active link in the navigation bar
             const navLink = navBar.querySelector(`a[href="#${section.id}"]`);
@@ -61,8 +63,8 @@ const setActiveSection = () => {
 };
 
 /**
- * Enable smooth scrolling when clicking navigation links
- */
+* Enable smooth scrolling when clicking navigation links
+*/
 const enableSmoothScrolling = () => {
     navBar.addEventListener('click', event => {
         // Check if the clicked target is a link
@@ -73,11 +75,18 @@ const enableSmoothScrolling = () => {
 
             const targetSection = document.querySelector(event.target.getAttribute('href'));
             if (targetSection) {
+                // Scroll smoothly to the target section
                 targetSection.scrollIntoView({ behavior: 'smooth' });
+
+                // Immediately update active classes for navigation and sections
+                navBar.querySelectorAll('a').forEach(link => link.classList.remove('active'));
+                event.target.classList.add('active');
+
+                sections.forEach(section => section.classList.remove('active'));
+                targetSection.classList.add('active');
 
                 // Allow updates after scrolling is complete
                 setTimeout(() => {
-                    setActiveSection();
                     isScrolling = false;
                 }, 500);
             }
@@ -85,18 +94,15 @@ const enableSmoothScrolling = () => {
     });
 };
 
-/**
- * Show or hide the navigation bar based on scrolling
- */
-let scrollTimeout;
-const handleNavBarVisibility = () => {
-    navBar.style.display = 'block';
 
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        navBar.style.display = 'none';
-    }, 4000);
-};
+
+
+/**
+ * Show the navigation bar at all times
+ 
+const handleNavBarVisibility = () => {
+    navBar.style.display = 'block'; // Ensure navbar is always visible
+};*/
 
 /**
  * Show or hide the "Scroll to Top" button
@@ -118,9 +124,8 @@ enableSmoothScrolling();
 scrollToTopButton.addEventListener('click', scrollToTop);
 
 // Add scroll event listeners for additional functionality
+
 document.addEventListener('scroll', () => {
     setActiveSection();
-    handleNavBarVisibility();
     handleScrollToTopButton();
 });
-

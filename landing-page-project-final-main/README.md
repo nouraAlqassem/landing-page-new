@@ -14,7 +14,6 @@ This project is a dynamic landing page designed to improve user experience by im
   - Active sections are highlighted with a distinct background color and border.
   - Corresponding navigation items are clearly highlighted with a bold font and a distinct background color.
 - Scroll to Top" Button: A button appears when scrolling down, allowing users to quickly navigate to the top of the page.
-- Auto-Hiding Navigation Bar: The navigation bar hides automatically when the user stops scrolling, improving visual clarity.
 - Fully Responsive Design: Ensures compatibility and usability across desktops, tablets, and mobile phones.
 
 ---
