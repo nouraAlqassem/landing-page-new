@@ -94,16 +94,6 @@ const enableSmoothScrolling = () => {
     });
 };
 
-
-
-
-/**
- * Show the navigation bar at all times
- 
-const handleNavBarVisibility = () => {
-    navBar.style.display = 'block'; // Ensure navbar is always visible
-};*/
-
 /**
  * Show or hide the "Scroll to Top" button
  */
